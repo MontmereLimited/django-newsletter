@@ -1,9 +1,8 @@
 django-extensions
 Django>=1.4.10
-vobject
 chardet
 surlex>=0.2.0
-sorl-thumbnail
+-e git+git@github.com:mariocesar/sorl-thumbnail.git@869d4a1ea07ea165992520f0273d157f95f48c78#egg=sorl_thumbnail-origin/HEAD
 
 # Test requirements
 webtest

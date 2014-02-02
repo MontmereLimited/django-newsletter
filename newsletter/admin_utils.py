@@ -4,7 +4,12 @@ from functools import update_wrapper
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib.admin.util import unquote
-from django.utils.encoding import force_unicode
+
+try:
+    from django.utils.encoding import force_unicode
+except ImportError:  # python3
+    # https://docs.djangoproject.com/en/1.5/topics/python3/#string-handling
+    from django.utils.encoding import force_text as force_unicode
 
 
 class ExtendibleModelAdminMixin(object):
@@ -26,7 +31,7 @@ class ExtendibleModelAdminMixin(object):
                         '%(key)r does not exist.'
                     ) % {
                         'name': force_unicode(opts.verbose_name),
-                        'key': unicode(object_id)
+                        'key': str(object_id)
                     }
                 )
 
